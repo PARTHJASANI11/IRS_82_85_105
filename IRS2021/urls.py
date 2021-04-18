@@ -12,3 +12,4 @@ urlpatterns = [
     path('image1', views.image1, name='image1'),
     path('speech1', views.speech1, name='speech1'),
 ]
+

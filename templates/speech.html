@@ -7,9 +7,14 @@
 <body>
 <h1>Welcome to Speech Retrieval System</h1>
 <form method="post" action="speech1">
-    Click on Start: <input type="submit" name="speech_submit" value="Start">
+    {% csrf_token %}
+    <input type="hidden" name="record">
+    <button class="button button5">Record</button>
 </form>
 
-<h1> The Percentage of Adult Content is: </h1>
+<h2> Total word in file are: {{ words }}</h2>
+<h2> Total adult words in file are: {{ adults }}</h2>
+<h1> The Percentage of Adult Content is: {{ probability }} </h1>
+
 </body>
 </html>

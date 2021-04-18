@@ -6,10 +6,15 @@
 </head>
 <body>
 <h1>Welcome to Text Retrieval System</h1>
-<form method="post" action="text1">
-    Upload Your Text File Here:<input type="file" name="text_file"><br><br>
-    <input type="submit" name="text_submit" value="Submit">
+<form method="post" enctype="multipart/form-data" action='text1'>
+    {% csrf_token %}
+    <input type="file" name="text_submit">
+    <button type="submit">Upload</button>
 </form>
-<h1> The Percentage of Adult Content is: </h1>
+
+<h2> Total word in file are: {{ words }}</h2>
+<h2> Total adult words in file are: {{ adults }}</h2>
+<h1> The Percentage of Adult Content is: {{ probability }} </h1>
+
 </body>
 </html>
