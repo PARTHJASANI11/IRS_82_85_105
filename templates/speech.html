@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .button {
+  background-color: #0020C2;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+    </style>
     <meta charset="UTF-8">
     <title>Speech Retrieval System</title>
 </head>
-<body>
+<body bgcolor="orange">
 <h1>Welcome to Speech Retrieval System</h1>
 <form method="post" action="speech1">
     {% csrf_token %}
@@ -12,8 +26,8 @@
     <button class="button button5">Record</button>
 </form>
 
-<h2> Total word in file are: {{ words }}</h2>
-<h2> Total adult words in file are: {{ adults }}</h2>
+<h2> Total word in speech are: {{ words }}</h2>
+<h2> Total adult words in speech are: {{ adults }}</h2>
 <h1> The Percentage of Adult Content is: {{ probability }} </h1>
 
 </body>
