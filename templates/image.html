@@ -8,41 +8,17 @@
 </head>
 <body>
 <h1>Welcome to Image Retrieval System</h1>
-<form method="post" action="image1">
-    <input type="hidden" name="img1" value="">
-    <input type="submit" name="image_submit" value="Image 1">
-    <img src="{% static 'image1.jfif' %}">
-</form>
-<form method="post" action="image1">
-    <input type="hidden" name="img2" value="">
-    <input type="submit" name="image_submit" value="Image 2">
-</form>
-<form method="post" action="image1">
-    <input type="hidden" name="img3" value="">
-    <input type="submit" name="image_submit" value="Image 3">
+<form method="post" enctype="multipart/form-data" action='image1'>
+    {% csrf_token %}
+    <input type="file" name="image_submit">
+    <button type="submit">Upload</button>
 </form>
 
-<form method="post" action="image1">
-    <input type="hidden" name="img3" value="">
-    <input type="submit" name="image_submit" value="Image 4">
-</form>
-<form method="post" action="image1">
-    <input type="hidden" name="img3" value="">
-    <input type="submit" name="image_submit" value="Image 5">
-</form>
-<form method="post" action="image1">
-    <input type="hidden" name="img3" value="">
-    <input type="submit" name="image_submit" value="Image 6">
-</form>
-<form method="post" action="image1">
-    <input type="hidden" name="img3" value="">
-    <input type="submit" name="image_submit" value="Image 7">
-</form>
 {% if text %}
     <h1>{{ text }}</h1>
 {% else %}
     <h2>your clicked image is </h2><br>
-    <img src={{ image }}>
+    <img src="{{ image }}">
 {% endif%}
 </body>
 </html>

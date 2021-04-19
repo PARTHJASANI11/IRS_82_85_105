@@ -7,12 +7,12 @@ import regex
 import numpy as np
 import pandas as pd
 import speech_recognition as sr
-#from nudenet import NudeClassifier,NudeDetector
-#import cv2
+from nudenet import NudeClassifier,NudeDetector
+import cv2
 import math
 import argparse
-#import matplotlib.pyplot as plt
-#import matplotlib.image as img
+import matplotlib.pyplot as plt
+import matplotlib.image as img
 
 
 # Create your views here.
@@ -219,7 +219,7 @@ def speech1(request):
         print('Your voice not recognised')
     return render(request, 'speech.html',{'probability':p1,'adults': adults , 'words':tot})
 
-'''def highlightFace(net, frame, conf_threshold=0.7):
+def highlightFace(net, frame, conf_threshold=0.7):
     frameOpencvDnn=frame.copy()
     frameHeight=frameOpencvDnn.shape[0]
     frameWidth=frameOpencvDnn.shape[1]
@@ -306,17 +306,15 @@ def age_detect():
             return False
         else:
             return True
-'''
+
 
 def image1(request):
 
     if request.method == 'POST':
-        d = request.FILES['text_submit'].readlines()
-    '''img1 = 'girl2.jpeg'
-    testImage = img.imread(img1)
+        d = request.FILES['image_submit']
 
-    plt.imshow(testImage)
-    # plt.show()
+
+    testImage = d
 
     classifier = NudeClassifier()
 
@@ -336,5 +334,6 @@ def image1(request):
             plt.imshow(testImage)
             # plt.show()
         else:
-            text="Sorry! You can't view the adult image"'''
-    return render(request,'image.html')
+            text="Sorry! You can't view the adult image"
+
+    return render(request,'image.html', {'image':d})
