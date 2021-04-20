@@ -8,17 +8,20 @@
 </head>
 <body>
 <h1>Welcome to Image Retrieval System</h1>
-<form method="post" enctype="multipart/form-data" action='image1'>
+{% load static %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data" action="image1">
     {% csrf_token %}
     <input type="file" name="image_submit">
     <button type="submit">Upload</button>
-</form>
+  </form>
 
-{% if text %}
-    <h1>{{ text }}</h1>
-{% else %}
-    <h2>your clicked image is </h2><br>
-    <img src="{{ image }}">
-{% endif%}
+  {% if image %}
+    <p>File uploaded at: <img src="{{ image }}"></img></p>
+  {% endif %}
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}
 </body>
 </html>

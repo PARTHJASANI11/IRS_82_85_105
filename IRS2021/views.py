@@ -7,13 +7,13 @@ import regex
 import numpy as np
 import pandas as pd
 import speech_recognition as sr
-from nudenet import NudeClassifier,NudeDetector
 import cv2
 import math
+from nudenet import NudeClassifier
 import argparse
-import matplotlib.pyplot as plt
-import matplotlib.image as img
-
+#import matplotlib.pyplot as plt
+#import matplotlib.image as img
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
@@ -309,12 +309,14 @@ def age_detect():
 
 
 def image1(request):
+    if request.method == 'POST' and request.FILES['image_submit']:
+        myfile = request.FILES['image_submit']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        print(uploaded_file_url)
 
-    if request.method == 'POST':
-        d = request.FILES['image_submit']
-
-
-    testImage = d
+    testImage = myfile
 
     classifier = NudeClassifier()
 
@@ -325,15 +327,17 @@ def image1(request):
 
     text=''
     if di_out[0]['unsafe'] < threshold:
-        plt.imshow(testImage)
+        text=''
+        #plt.imshow(testImage)
         # plt.show()
     else:
         age = age_detect()
         if age == True:
+            text=''
             #text='You can view the adult image'
-            plt.imshow(testImage)
+            #plt.imshow(testImage)
             # plt.show()
         else:
             text="Sorry! You can't view the adult image"
 
-    return render(request,'image.html', {'image':d})
+    return render(request,'image.html', {'image':uploaded_file_url})
