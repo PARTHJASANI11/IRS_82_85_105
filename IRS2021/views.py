@@ -337,7 +337,6 @@ def image1(request):
         detector = NudeDetector()
         det_res=detector.detect(testImage)
 
-
         for i in det_res:
             print(i['label'])
 
@@ -352,4 +351,4 @@ def image1(request):
     if text!='':
         uploaded_file_url=''
 
-    return render(request,'image.html', {'image':uploaded_file_url})
+    return render(request,'image.html', {'image':uploaded_file_url,'text':text})

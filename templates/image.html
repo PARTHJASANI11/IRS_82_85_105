@@ -7,7 +7,7 @@
     <title>Image Retrieval System</title>
 </head>
 <body>
-<h1>Welcome to Image Retrieval System</h1>
+<h1>Welcome to Decent Image Retrieval System</h1>
 {% load static %}
 
 {% block content %}
@@ -19,6 +19,9 @@
 
   {% if image %}
     <p>Your image is: <img src="{{ image }}"></img></p>
+  {% endif %}
+  {% if text %}
+    <h1>Sorry you can't view the adult image</h1>
   {% endif %}
 
   <p><a href="{% url 'home' %}">Return to home</a></p>
