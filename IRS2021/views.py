@@ -324,11 +324,12 @@ def image1(request):
     # A. Classify single image
     di_out = classifier.classify(testImage)
     threshold = 0.5
-
+    li=''
     text=''
     print('diout',di_out)
     if di_out[0]['unsafe'] < threshold:
         text=''
+        li=['image is not adult']
         #plt.imshow(testImage)
         # plt.show()
 
