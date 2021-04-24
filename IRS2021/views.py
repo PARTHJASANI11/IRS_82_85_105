@@ -336,9 +336,10 @@ def image1(request):
         age = age_detect()
         detector = NudeDetector()
         det_res=detector.detect(testImage)
-
+        li=[]
         for i in det_res:
             print(i['label'])
+            li.append(i['label'])
 
         print('age is: ',age)
         if age == True:
@@ -351,4 +352,4 @@ def image1(request):
     if text!='':
         uploaded_file_url=''
 
-    return render(request,'image.html', {'image':uploaded_file_url,'text':text})
+    return render(request,'image.html', {'image':uploaded_file_url,'text':text, 'exposed':li})

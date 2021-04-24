@@ -24,6 +24,11 @@
     <h1>Sorry you can't view the adult image</h1>
   {% endif %}
 
+    <h1>Exposed Parts are</h1>
+    {%for i in exposed%}
+        {{ i }}<br>
+    {% endfor %}
+
   <p><a href="{% url 'home' %}">Return to home</a></p>
 {% endblock %}
 </body>
