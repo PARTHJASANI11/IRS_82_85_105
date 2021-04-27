@@ -2,33 +2,59 @@
 <html lang="en">
 <head>
     <style>
-        .button {
-  background-color: #0020C2;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 25px;
-}
+    input[type=submit]:hover
+    {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    input[type=submit]
+    {
+      background-color: white;
+      border: none;
+      width: 250px;
+      color: black;
+      padding: 20px 32px;
+      text-align: center;
+      text-decoration: none;
+            font-weight: bold;
+      display: inline-block;
+      font-size: 20px;
+      margin: 10px 2px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    }
+    #te
+    {
+        margin: 20px;
+        border: 4px solid white;
+        border-radius: 5px;
+        width: 350px;
+        padding: 20px;
+    }
     </style>
     <meta charset="UTF-8">
     <title>Speech Retrieval System</title>
 </head>
-<body bgcolor="orange">
-<h1>Welcome to Speech Retrieval System</h1>
+<body bgcolor="black">
+<div>
+    {% load static %}
+    <img src="{% static "C:/Users/dell/PycharmProjects/IRS_82_85_105/static/b2.png" %}"
+         style="width: 1550px; height: 500px;">
+</div>
+<center>
+    <h1> <strong style="color:white;"> Welcome to Speech Retrieval System </strong> </h1><br><br>
+    <div id = 'te'>
 <form method="post" action="speech1">
     {% csrf_token %}
+    <h2> <strong style="color:white;"> Chick on Record: </strong> </h2>
     <input type="hidden" name="record">
-    <button class="button button5">Record</button>
+    <input type="submit"  value="Record"></input>
 </form>
+    </div> <br> <br>
 
-<h2> Total word in speech are: {{ words }}</h2>
-<h2> Total adult words in speech are: {{ adults }}</h2>
-<h1> The Percentage of Adult Content is: {{ probability }} </h1>
-
+    <h2> <strong style="color:white;"> Total word in speech are: {{ words }} </strong> </h2>
+    <h2> <strong style="color:white;"> Total adult words in speech are: {{ adults }} </strong> </h2>
+    <h1> <strong style="color:white;"> The Percentage of Adult Content is: {{ probability }} </strong> </h1>
+</center>
 </body>
 </html>

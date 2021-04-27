@@ -5,31 +5,69 @@
 <head>
     <meta charset="UTF-8">
     <title>Image Retrieval System</title>
+    <style>
+    input[type=submit]:hover
+    {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    input[type=submit], input[type=file]
+    {
+      background-color: white;
+      border: none;
+      width: 250px;
+      color: black;
+      padding: 20px 32px;
+      text-align: center;
+      text-decoration: none;
+            font-weight: bold;
+      display: inline-block;
+      font-size: 20px;
+      margin: 10px 2px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    }
+    #te
+    {
+        margin: 20px;
+        border: 4px solid white;
+        border-radius: 5px;
+        width: 350px;
+        padding: 20px;
+    }
+</style>
 </head>
-<body>
-<h1>Welcome to Decent Image Retrieval System</h1>
+<body bgcolor="black">
+<div>
+    {% load static %}
+    <img src="{% static "C:/Users/dell/PycharmProjects/IRS_82_85_105/static/b2.png" %}"
+         style="width: 1550px; height: 500px;">
+</div>
+<center>
+    <h1> <strong style="color:white;"> Welcome to Image Retrieval System </strong> </h1><br><br>
 {% load static %}
 
 {% block content %}
+    <div id = 'te'>
   <form method="post" enctype="multipart/form-data" action="image1">
     {% csrf_token %}
-    <input type="file" name="image_submit">
-    <button type="submit">Upload</button>
+    <h2> <strong style="color:white;"> Choose Image File: </strong> </h2><input type="file" name="image_submit">
+    <input type="submit">Upload</input>
   </form>
-
+    </div><br><br>
   {% if image %}
-    <p>Your image is: <img src="{{ image }}"></img></p>
+      <h2> <strong style="color:white;"> Your image is: <img src="{{ image }}"></img> </strong> </h2>
   {% endif %}
   {% if text %}
-    <h1>Sorry you can't view the adult image</h1>
+      <h1> <strong style="color:white;"> Sorry you can't view the adult image </strong> </h1>
   {% endif %}
 
-    <h1>Exposed Parts are</h1>
+    <h1> <strong style="color:white;"> Exposed Parts are </strong> </h1>
     {%for i in exposed%}
         {{ i }}<br>
     {% endfor %}
 
-  <p><a href="{% url 'home' %}">Return to home</a></p>
 {% endblock %}
+</center>
 </body>
 </html>

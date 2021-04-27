@@ -3,18 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Text Retrieval System</title>
+    <style>
+    input[type=submit]:hover
+    {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    input[type=submit], input[type=file]
+    {
+      background-color: white;
+      border: none;
+      width: 250px;
+      color: black;
+      padding: 20px 32px;
+      text-align: center;
+      text-decoration: none;
+        font-weight: bold;
+      display: inline-block;
+      font-size: 20px;
+      margin: 10px 2px;
+      cursor: pointer;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+    }
+    #te
+    {
+        margin: 20px;
+        border: 4px solid white;
+        border-radius: 5px;
+        width: 350px;
+        padding: 20px;
+    }
+</style>
 </head>
-<body>
-<h1>Welcome to Text Retrieval System</h1>
-<form method="post" enctype="multipart/form-data" action='text1'>
-    {% csrf_token %}
-    <input type="file" name="text_submit">
-    <button type="submit">Upload</button>
+<body bgcolor="black">
+<div>
+    {% load static %}
+    <img src="{% static "C:/Users/dell/PycharmProjects/IRS_82_85_105/static/b2.png" %}"
+         style="width: 1550px; height: 500px;">
+</div>
+<center>
+    <h1> <strong style="color:white;"> Welcome to Text Retrieval System </strong> </h1><br><br>
+    <div id = 'te'>
+        <form method="post" enctype="multipart/form-data" action='text1'>
+        {% csrf_token %}
+        <h2> <strong style="color:white;"> Choose Text File: </strong> </h2> <input type="file" name="text_submit">
+        <input type="submit">Upload</input>
 </form>
 
-<h2> Total word in file are: {{ words }}</h2>
-<h2> Total adult words in file are: {{ adults }}</h2>
-<h1> The Percentage of Adult Content is: {{ probability }} </h1>
+    </div><br><br>
 
+
+    <h2> <strong style="color:white;"> Total word in file are: {{ words }} </strong> </h2>
+    <h2> <strong style="color:white;"> Total adult words in file are: {{ adults }} </strong></h2>
+    <h1> <strong style="color:white;"> The Percentage of Adult Content is: {{ probability }}</strong> </h1>
+
+</center>
 </body>
 </html>
