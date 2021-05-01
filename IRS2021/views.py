@@ -108,8 +108,8 @@ def text1(request):
     print(len(final))
     print(len(terms_list))
     p = len(final) / tot_len
-
-    return render(request,'text.html', {'probability':p,'words':tot_len,'adults':len(final)})
+    p1=len(final)/len(terms_list)
+    return render(request,'text.html', {'probability':p,'pro':p1,'words':tot_len,'adults':len(final)})
 
 
 def speech1(request):
@@ -217,7 +217,7 @@ def speech1(request):
         print('adult content ratio before stop words removal is : ', p1)
     else:
         print('Your voice not recognised')
-    return render(request, 'speech.html',{'probability':p1,'adults': adults , 'words':tot})
+    return render(request, 'speech.html',{'probability':p1,'pro':p,'adults': adults , 'words':tot})
 
 def highlightFace(net, frame, conf_threshold=0.7):
     frameOpencvDnn = frame.copy()
